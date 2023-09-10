@@ -99,7 +99,7 @@ function themeConfig($form)
         null,
         '[{"type":"normal","title":"欢迎使用Ayakin！","content":"这是主题默认的公告，你可以在控制台-外观-设置外观-公告中修改或删除它。"}]',
         _t('公告'),
-        _t('会展示在网站首页，请按照 <a href="#">公告配置示范</a> 来填写此项')
+        _t('会展示在网站首页，请按照 <a href="https://blog.lumirant.top/archives/57/">公告配置示范</a> 来填写此项')
     );
 
     $form->addInput($notice);
@@ -173,7 +173,7 @@ function themeConfig($form)
         null,
         null,
         _t('附加导航'),
-        _t('会附加在导航栏尾部，请按照 <a href="#">附加导航配置示范</a> 来填写此项。')
+        _t('会附加在导航栏尾部，请按照 <a href="https://blog.lumirant.top/archives/55/">附加导航配置示范</a> 来填写此项。')
     );
 
     $form->addInput($additionalNav);
@@ -223,17 +223,3 @@ function getCategoryies($returnArray = false)
     return $text;
   }
 }
-
-/*
-function themeFields($layout)
-{
-    $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(
-        'logoUrl',
-        null,
-        null,
-        _t('站点LOGO地址'),
-        _t('在这里填入一个图片URL地址, 以在网站标题前加上一个LOGO')
-    );
-    $layout->addItem($logoUrl);
-}
-*/
