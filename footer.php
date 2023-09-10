@@ -17,11 +17,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <footer id="footer" role="contentinfo">
     <?php if(getOptions()->simpleCopyright == "enable") : ?>
         &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a>
-        <?php _e('Theme by <a href="#">Ayakin</a>'); ?>.
+        <?php _e('Theme by <a href="https://blog.lumirant.top/archives/51/">Ayakin</a>'); ?>.
     <?php else : ?>
         &copy; <?php echo date('Y'); ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->options->title(); ?></a><?php _e(' All Rights Reserved.'); ?>
         <br>
-        <?php _e('Theme <a href="#">Ayakin</a> designed by <a href="https://Lumirant.top">Lumirant</a>'); ?>.
+        <?php _e('Theme <a href="https://blog.lumirant.top/archives/51/">Ayakin</a> designed by <a href="https://Lumirant.top">Lumirant</a>'); ?>.
     <?php endif; ?>
 </footer><!-- end #footer -->
 
