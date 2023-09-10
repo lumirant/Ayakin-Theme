@@ -1,4 +1,4 @@
-name: "Bug report"
+name: Bug反馈
 description: 使用过程中遇到了Bug？点击这里进行快速反馈
 labels: ["bug反馈"]
 assignees:
