@@ -6,6 +6,7 @@ assignees:
   - lumirant
 body:
   - type: markdown
+    id: intro
     attributes:
       value: |
         请根据Bug发生情况，尽可能详细的填写以下信息。
