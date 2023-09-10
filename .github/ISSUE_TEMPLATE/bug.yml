@@ -75,7 +75,7 @@ body:
     validations:
       required: true
   - type: input
-    id: time
+    id: name
     attributes:
       label: 你的称呼
       description: 如有需要，会使用该名字称呼你。
@@ -83,7 +83,7 @@ body:
     validations:
       required: false
   - type: input
-    id: time
+    id: email
     attributes:
       label: 你的邮箱
       description: 如有需要，会通过邮箱联系你。
