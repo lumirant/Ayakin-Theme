@@ -1,92 +1,47 @@
-name: Bug反馈
-description: 使用过程中遇到了Bug？点击这里进行快速反馈
-labels: ["bug反馈"]
-title: Bug反馈-{将此处替换为一句对该Bug简短的描述}
+name: 申请收录
+description: 申请加入开往选这个
+labels: ["申请收录"]
 assignees:
-  - lumirant
+  - linlinzzo
 body:
   - type: markdown
     attributes:
       value: |
-        请根据Bug发生情况，尽可能详细的填写以下信息。
+        请在标题写“网站名称”！
   - type: input
-    id: time
+    id: name
     attributes:
-      label: 出现时间
-      description: Bug出现的时间。
-      placeholder: ex. 2023/9/10 12:00
+      label: 网站名称
+      description: 会在 Readme 中展示
+      placeholder: ex. 开往
     validations:
       required: true
   - type: input
-    id: themeVersion
+    id: website
     attributes:
-      label: 主题版本
+      label: 网站网址
       description: |
-        Bug发生时，你所使用的Ayakin主题版本。
-      placeholder: ex. 1.0.0
+        必须是 http**s** 网站；
+        `bar, best, cloud, digital, guru, life, live, miami, online, rest, shop, site, store, surf, today, website, world, sapce, fun` 这些域名往往购买时便宜，但第二年续费会在 100 元以上，你会坚持用这个域名吗？如果你更新了域名，记得打开 issues 更新信息。
+      placeholder: ex. https://travellings.link
     validations:
       required: true
   - type: input
-    id: typechoVersion
+    id: place
     attributes:
-      label: Typecho版本
+      label: 徽标位置
       description: |
-        Bug发生时，你所使用的Typecho版本。
+        只放在“网页底部”，或只放在“默认收起的菜单里”，审核通过率较低。请放在打开网页后能**直接看到的地方**（顶栏或固定的侧栏是不错的选择，可参见 Readme 或已收录的网站）；
       placeholder: ex. 侧栏
     validations:
       required: true
- - type: dropdown
-    id: browsers
-    attributes:
-      label: 浏览器
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-        - Internet Explorer（不受维护）
-        - 其他（如有，请在下方填写）
-    validations:
-      required: true
-  - type: input
-    id: otherBrowser
-    attributes:
-      label: 其他浏览器
-      description: |
-        如果你在上一项选择了“其他”，请填写此项。
-      placeholder: ex. Via
-  - type: input
-    id: bugInfo
-    attributes:
-      label: 网站上显示的错误信息
-      description: |
-        如果这个Bug影响到了网站的正常运行，页面上会显示一条或多条错误信息，你可以将它们复制下来，粘贴到此处。
-      placeholder: ex. Failed opening required 'xxx.php' (include_path='.:')
-    validations:
-      required: false
   - type: textarea
-    id: bugDetails
+    id: content
     attributes:
-      label: 出现现象
+      label: 内容方向
       description: |
-        请详细描述Bug发生的现象。
-    validations:
-      required: true
-  - type: input
-    id: time
-    attributes:
-      label: 你的称呼
-      description: 如有需要，会使用该名字称呼你。
-      placeholder: ex. lumirant
-    validations:
-      required: false
-  - type: input
-    id: time
-    attributes:
-      label: 你的邮箱
-      description: 如有需要，会通过邮箱联系你。
-      placeholder: ex. ayakin@example.com
+        不会展示在 Readme ；
+        你想与网络世界分享什么？
     validations:
       required: false
   - type: checkboxes
@@ -94,8 +49,9 @@ body:
     attributes:
       label: 请确认一下事项
       description: |
-        1. 我承诺该Bug真实发生。
-        2. 我的联系信息填写正确（如果有填写）。
+        1. 我已阅读要求且满足收录条件。
+        2. 我的信息填写正确，若有变动如更新网址等会及时通知更正。
+        3. 开往会定期观测您网站的在线状况，国内无法访问正常的网站会被移除项目。
       options:
         - label: 我已确认以上事项
           required: true
