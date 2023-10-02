@@ -64,7 +64,7 @@
                             <?php endif;?>
                         <?php endwhile; ?>
                     <?php endif; ?>
-                    <?php foreach(json_decode(getOptions()->additionalNav,true) ?? [] as $additionalNav): ?>
+                    <?php foreach(json_decode((getOptions()->additionalNav) ?? "",true) ?? [] as $additionalNav): ?>
                         <?php if($additionalNav["hidden"] == 0) : ?>
                             <a href="<?php echo($additionalNav["link"]) ?>"
                                         title="<?php echo($additionalNav["name"]) ?>"
