@@ -1,10 +1,10 @@
 <?php
-$topPosts = trim(getOptions()->topArticle) ?? "";
-$topPosts = explode(",",$topPosts);
+$topPosts = trim((getOptions()->topArticle) ?? "");
+$topPosts = array_filter(explode(",",$topPosts));
 ?>
-<?php if($this->_currentPage == 1) :?>
+<?php if($this->_currentPage == 1 && !empty($topPosts)) :?>
     <?php foreach ($topPosts as $cid) : ?>
-        <?php $this->widget("Widget_Archive@ayakin" . $cid, "pageSize=1&type=post", "cid=" . $cid)->to($item);?>
+        <?php $this->widget("Widget_Archive@ayakin" . $cid, "pageSize=1&type=post", "cid=" . $cid)->to($item); if($item->title != null) :?>
             <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
                 <h2 class="post-title" itemprop="name headline">
                     <span class="top-article-tag">置顶</span><a itemprop="url"
@@ -15,10 +15,10 @@ $topPosts = explode(",",$topPosts);
                 </div>
                 <ul class="post-meta">
                     <li>
-                        <time datetime="<?php $item->date("c")?>" itemprop="datePublished"><?php echo(getHumanizedDate($this->date->timeStamp)); ?></time>
                     </li>
                     <li><?php $item->category("<span style='color:#444;font-weight: 600;'>·</span>")?></li>
                 </ul>
             </article>
+        <?php endif;?>
     <?php endforeach;?>
 <?php endif;?>
