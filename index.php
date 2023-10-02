@@ -15,7 +15,7 @@ $this->need('/header.php');
     <?php $this->need('/component/notice.php'); ?>
     <?php $this->need('/component/topPosts.php'); ?>
     <?php while ($this->next()): ?>
-        <?php if(!in_array($this->cid,explode(',',trim(getOptions()->topArticle)) ?? [])) : ?>
+        <?php if(!in_array($this->cid,explode(',',trim(getOptions()->topArticle ?? "")) ?? [])) : ?>
             <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
                 <h2 class="post-title" itemprop="name headline">
                     <a itemprop="url"
