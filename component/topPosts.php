@@ -15,6 +15,7 @@ $topPosts = array_filter(explode(",",$topPosts));
                 </div>
                 <ul class="post-meta">
                     <li>
+                        <time datetime="<?php $item->date("c")?>" itemprop="datePublished"><?php echo(getHumanizedDate($this->date->timeStamp)); ?></time>
                     </li>
                     <li><?php $item->category("<span style='color:#444;font-weight: 600;'>·</span>")?></li>
                 </ul>
