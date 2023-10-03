@@ -34,7 +34,7 @@
 <header id="header" class="clearfix">
     <div class="container">
         <div class="flex row" style="line-height: 0;align-items: center;">
-            <div class="site-name col-mb-12 col-9">
+            <div class="site-name col-mb-12 col-9" style="line-height: normal;">
                 <?php if (!empty(getOptions()->logoUrl)): ?>
                     <a id="logo" href="<?php $this->options->siteUrl(); ?>">
                         <img src="<?php getOptions()->logoUrl() ?>" alt="<?php $this->options->title() ?>"/>
@@ -89,9 +89,48 @@
     </div>
 </header><!-- end #header -->
 
+        <nav id="mobile-nav-menu" class="clearfix" role="navigation">
+            <a<?php if ($this->is('index')): ?> class="current"<?php endif; ?>
+                href="<?php $this->options->siteUrl(); ?>"><?php _e('首页'); ?></a>
+            <?php \Widget\Contents\Page\Rows::alloc()->to($pages); ?>
+            <?php $this->widget("Widget\Metas\Category\Rows")->to($categorys); ?>
+            <?php if ($categorys->have()): ?>
+                <?php while ($categorys->next()): ?>
+                    <?php if(!in_array($categorys->mid,getOptions()->hiddenNav)) : ?>
+                        <a href="<?php $categorys->permalink(); ?>"
+                        title="<?php $categorys->name(); ?>"
+                        class="<?php echo isActiveMenu(
+                          $this,
+                          $categorys->slug
+                        ); ?>  ">
+                            <?php $categorys->name(); ?>
+                        </a>
+                    <?php endif;?>
+                <?php endwhile; ?>
+            <?php endif; ?>
+            <?php foreach(json_decode((getOptions()->additionalNav) ?? "",true) ?? [] as $additionalNav): ?>
+                <?php if($additionalNav["hidden"] == 0) : ?>
+                    <a href="<?php echo($additionalNav["link"]) ?>"
+                                title="<?php echo($additionalNav["name"]) ?>"
+                                class="<?php echo isActiveMenu(
+                                  $this,
+                                  $categorys->slug
+                                ); ?>  ">
+                        <?php echo($additionalNav["name"]) ?>
+                    </a>
+                    <?php endif; ?>
+            <?php endforeach; ?>
+            <div class="site-search kit-hidden-tb">
+                <form id="search" method="post" action="<?php $this->options->siteUrl(); ?>" role="search">
+                    <label for="s" class="sr-only"><?php _e('搜索关键字'); ?></label>
+                    <input type="text" id="s" name="s" class="text" placeholder="<?php _e('输入关键字搜索'); ?>"/>
+                </form>
+            </div>
+        </nav>
+
 <script>
     function showMenu() {
-        var menu = document.getElementById("nav-menu")
+        var menu = document.getElementById("mobile-nav-menu")
         if(menu.classList.contains("menu-active")) {
             menu.classList.remove("menu-active");
         }
