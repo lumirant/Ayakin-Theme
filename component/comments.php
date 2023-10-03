@@ -61,6 +61,10 @@
             </form>
         </div>
     <?php else: ?>
-        <h3><?php _e('评论已关闭'); ?></h3>
+            <?php if(!empty(getOptions()->footer_nocomment)) : ?>
+                <h3><?php _e(getOptions()->footer_nocomment) ?></h3>
+            <?php else: ?>
+                <h3><?php _e('评论已关闭'); ?></h3>
+            <?php endif; ?>
     <?php endif; ?>
 </div>
