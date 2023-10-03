@@ -173,6 +173,13 @@ Ayakin使用[Apache2.0][3]协议开源，若使用Ayakin主题，你必须遵守
 
 Ayakin主题交流群：751484731
 
+## 七、赞助
+
+如果你觉得主题做的不错，欢迎打赏作者哦
+特别提示：合理理财，随缘赞助，请根据自身经济情况决定赞助金额，未成年请不要选择大额赞助~
+
+![赞助](https://github.com/lumirant/Ayakin-Theme/blob/main/img/zanzhu.jfif)
+
 
   [1]: https://lumirant.top/
   [2]: https://github.com/lumirant/Ayakin-Theme
