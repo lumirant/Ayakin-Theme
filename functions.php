@@ -99,10 +99,29 @@ function themeConfig($form)
         null,
         '[{"type":"normal","title":"欢迎使用Ayakin！","content":"这是主题默认的公告，你可以在控制台-外观-设置外观-公告中修改或删除它。"}]',
         _t('公告'),
-        _t('会展示在网站首页，请按照 <a href="https://blog.lumirant.top/archives/57/">公告配置示范</a> 来填写此项')
+        _t('会展示在网站首页，请按照 <a href="https://blog.lumirant.top/archives/55/">公告配置示范</a> 来填写此项')
     );
 
     $form->addInput($notice);
+
+    $hiddenNav = new \Typecho\Widget\Helper\Form\Element\Checkbox(
+        'hiddenNav',
+        getCategoryies(true),
+        [],
+        _t('隐藏分类导航'),
+        _t('主题默认会将所有分类显示在导航栏上，如果你不想显示某些分类，请勾选对应的分类。')
+    );
+    $form->addInput($hiddenNav);
+    
+    $topArticle = new \Typecho\Widget\Helper\Form\Element\Text(
+        'topArticle',
+        null,
+        null,
+        _t('置顶文章'),
+        _t('需填入指定文章cid，多个文章用英文半角逗号“,”分隔。')
+    );
+
+    $form->addInput($topArticle);
     
     $avatarRootUrl = new \Typecho\Widget\Helper\Form\Element\Text(
         'avatarRootUrl',
@@ -134,15 +153,26 @@ function themeConfig($form)
 
     $form->addInput($simpleCopyright);
     
-    $topArticle = new \Typecho\Widget\Helper\Form\Element\Text(
-        'topArticle',
+    $footer_nocomment = new \Typecho\Widget\Helper\Form\Element\Text(
+        'footer_nocomment',
         null,
-        null,
-        _t('置顶文章'),
-        _t('需填入指定文章cid，多个文章用英文半角逗号“,”分隔。')
+        '评论已关闭',
+        _t('评论关闭的文字显示'),
+        _t('默认显示：“评论已关闭”')
     );
 
-    $form->addInput($topArticle);
+    $form->addInput($footer_nocomment);
+
+    $ICP_show = new \Typecho\Widget\Helper\Form\Element\Text(
+        'ICP_show',
+        null,
+        '',
+        _t('输入你的ICP备案号'),
+        _t('默认为空，填写后置于页脚底部')
+    );
+
+    $form->addInput($ICP_show);
+    
 
     $sidebarBlock = new \Typecho\Widget\Helper\Form\Element\Checkbox(
         'sidebarBlock',
@@ -159,21 +189,12 @@ function themeConfig($form)
 
     $form->addInput($sidebarBlock->multiMode());
     
-    $hiddenNav = new \Typecho\Widget\Helper\Form\Element\Checkbox(
-        'hiddenNav',
-        getCategoryies(true),
-        [],
-        _t('隐藏分类导航'),
-        _t('主题默认会将所有分类显示在导航栏上，如果你不想显示某些分类，请勾选对应的分类。')
-    );
-    $form->addInput($hiddenNav);
-    
     $additionalNav = new \Typecho_Widget_Helper_Form_Element_Textarea(
         'additionalNav',
         null,
         null,
         _t('附加导航'),
-        _t('会附加在导航栏尾部，请按照 <a href="https://blog.lumirant.top/archives/55/">附加导航配置示范</a> 来填写此项。')
+        _t('会附加在导航栏尾部，请按照 <a href="https://blog.lumirant.top/archives/57/">附加导航配置示范</a> 来填写此项。')
     );
 
     $form->addInput($additionalNav);
