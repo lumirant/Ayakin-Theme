@@ -150,13 +150,23 @@ Theme Ayakin designed by Lumirant.
 
 Ayain已开源至Github，[点击下载Ayakin主题][2]。
 
-## 四、开源协议
+## 四、更新日志
+
+2023-10-3：
+- 修复了站名过长时显示不完整的问题 [@Violetmail](https://github.com/Violetmail)
+- 页脚添加了备案号显示 [@Violetmail](https://github.com/Violetmail)
+- 文章评论关闭时，可自定义底部的文字提示 [@Violetmail](https://github.com/Violetmail)
+
+2023-10-2：
+- 修复了置顶文章为空时渲染出错的问题
+
+## 五、开源协议
 
 Ayakin使用[Apache2.0][3]协议开源，若使用Ayakin主题，你必须遵守Apache2.0协议规定的所有条款，以及声明主题名称及其链接。
 请尊重劳动成果，未经主题作者许可，禁止将该主题用于任何商业用途、二次创作和开发及主题移植。
 如需商用或去除版权声明请联系[开发者][4]，谢谢。
 
-## 五、交流
+## 六、交流
 
 您可以加入 QQ 群或当前平台（主题网站、Github仓库、主题文档网站）对主题进行报告错误（Issues）、修复问题(Pull requests)、提高代码质量或提交新功能。
 
