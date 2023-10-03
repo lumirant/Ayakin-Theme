@@ -34,7 +34,7 @@
 <header id="header" class="clearfix">
     <div class="container">
         <div class="flex row" style="line-height: 0;align-items: center;">
-            <div class="site-name col-mb-12 col-9" style="line-height: 1;">
+            <div class="site-name col-mb-12 col-9" style="line-height: normal;"> <!-- 设置了默认行高，避免网站名过长产生重叠 -->
                 <?php if (!empty(getOptions()->logoUrl)): ?>
                     <a id="logo" href="<?php $this->options->siteUrl(); ?>">
                         <img src="<?php getOptions()->logoUrl() ?>" alt="<?php $this->options->title() ?>"/>
