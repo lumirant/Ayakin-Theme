@@ -99,7 +99,7 @@ function themeConfig($form)
         null,
         '[{"type":"normal","title":"欢迎使用Ayakin！","content":"这是主题默认的公告，你可以在控制台-外观-设置外观-公告中修改或删除它。"}]',
         _t('公告'),
-        _t('会展示在网站首页，请按照 <a href="https://blog.lumirant.top/archives/57/">公告配置示范</a> 来填写此项')
+        _t('会展示在网站首页，请按照 <a href="https://blog.lumirant.top/archives/55/">公告配置示范</a> 来填写此项')
     );
 
     $form->addInput($notice);
@@ -173,10 +173,30 @@ function themeConfig($form)
         null,
         null,
         _t('附加导航'),
-        _t('会附加在导航栏尾部，请按照 <a href="https://blog.lumirant.top/archives/55/">附加导航配置示范</a> 来填写此项。')
+        _t('会附加在导航栏尾部，请按照 <a href="https://blog.lumirant.top/archives/57/">附加导航配置示范</a> 来填写此项。')
     );
 
     $form->addInput($additionalNav);
+    
+    $footer_nocomment = new \Typecho\Widget\Helper\Form\Element\Text(
+        'footer_nocomment',
+        null,
+        '',
+        _t('评论关闭的文字显示'),
+        _t('评论关闭后会显示此文本，为空则默认显示“评论已关闭”。')
+    );
+
+    $form->addInput($footer_nocomment);
+    
+    $ICP_show = new \Typecho\Widget\Helper\Form\Element\Text(
+        'ICP_show',
+        null,
+        '',
+        _t('网站ICP备案号'),
+        _t('默认为空，填写后将置于页脚底部。')
+    );
+
+    $form->addInput($ICP_show);
     
     $additionalCss = new \Typecho_Widget_Helper_Form_Element_Textarea(
         'additionalCss',
@@ -223,3 +243,17 @@ function getCategoryies($returnArray = false)
     return $text;
   }
 }
+
+/*
+function themeFields($layout)
+{
+    $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+        'logoUrl',
+        null,
+        null,
+        _t('站点LOGO地址'),
+        _t('在这里填入一个图片URL地址, 以在网站标题前加上一个LOGO')
+    );
+    $layout->addItem($logoUrl);
+}
+*/
