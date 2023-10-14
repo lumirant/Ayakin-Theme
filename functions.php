@@ -1,6 +1,14 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once(__DIR__."/core/coreStart.php");
+use Typecho\Common;
+use Utils\Helper;
+use Widget\Notice;
+use Widget\Options;
+use Typecho\Widget\Helper\Form\Element\Checkbox;
+use Typecho\Widget\Helper\Form\Element\Text;
+use Typecho\Widget\Helper\Form\Element\Textarea;
+use Typecho\Widget\Helper\Form\Element\Radio;
 
 function themeConfig($form)
 {
@@ -10,13 +18,17 @@ function themeConfig($form)
         <p class="message-content">主题目前正在开发中，有不足的地方还请多多宽待~</p>
     </div>
     ';
+    echo '
+    <link rel="stylesheet" href="'. Typecho_Db::get()->fetchRow(
+            Typecho_Db::get()->select()->from("table.options")->where("name = ?", "siteUrl")
+            )["value"] .'/usr/themes/Ayakin/css/admin.css">';
     // echo '
     // <div class="message success" style="border-radius: 5px;padding: 8px 18px;background: #FDD835;color: #b56117;box-shadow: 0px 0px 13px -2px #FFEB3B;margin: 15px 0px;">
     //     <h2 class="message-title">你的主题配置尚未备份</h2>
     //     <p class="message-content">当你切换博客主题时，Ayakin的配置信息将会丢失，<a href="#">点击备份</a>可以避免这种情况的发生。</p>
     // </div>
     // ';
-    $themecolor = new \Typecho\Widget\Helper\Form\Element\Radio(
+    $themecolor = new Radio(
         'themecolor',
         [
             'black' => _t('水墨黑'),
@@ -33,7 +45,7 @@ function themeConfig($form)
 
     $form->addInput($themecolor);
     
-    $faviconUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+    $faviconUrl = new Text(
         'faviconUrl',
         null,
         null,
@@ -43,7 +55,7 @@ function themeConfig($form)
 
     $form->addInput($faviconUrl);
     
-    $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+    $logoUrl = new Text(
         'logoUrl',
         null,
         null,
@@ -53,7 +65,7 @@ function themeConfig($form)
 
     $form->addInput($logoUrl);
     
-    $avatarUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+    $avatarUrl = new Text(
         'avatarUrl',
         null,
         null,
@@ -64,7 +76,7 @@ function themeConfig($form)
     
     $form->addInput($avatarUrl);
     
-    $authorName = new \Typecho\Widget\Helper\Form\Element\Text(
+    $authorName = new Text(
         'authorName',
         null,
         null,
@@ -74,7 +86,7 @@ function themeConfig($form)
 
     $form->addInput($authorName);
     
-    $authorDescribe = new \Typecho\Widget\Helper\Form\Element\Text(
+    $authorDescribe = new Text(
         'authorDescribe',
         null,
         null,
@@ -84,7 +96,7 @@ function themeConfig($form)
 
     $form->addInput($authorDescribe);
     
-    $authorTag = new \Typecho\Widget\Helper\Form\Element\Text(
+    $authorTag = new Text(
         'authorTag',
         null,
         null,
@@ -104,7 +116,7 @@ function themeConfig($form)
 
     $form->addInput($notice);
     
-    $avatarRootUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+    $avatarRootUrl = new Text(
         'avatarRootUrl',
         null,
         'https://cravatar.cn/avatar/',
@@ -114,7 +126,7 @@ function themeConfig($form)
 
     $form->addInput($avatarRootUrl);
     
-    $enableArticleNav = new \Typecho\Widget\Helper\Form\Element\Radio(
+    $enableArticleNav = new Radio(
         'enableArticleNav',
         ['enable' => _t('是'),'disable' => _t('否')],
         'enable',
@@ -124,7 +136,7 @@ function themeConfig($form)
 
     $form->addInput($enableArticleNav);
     
-    $simpleCopyright = new \Typecho\Widget\Helper\Form\Element\Radio(
+    $simpleCopyright = new Radio(
         'simpleCopyright',
         ['enable' => _t('是'),'disable' => _t('否')],
         'disable',
@@ -134,7 +146,7 @@ function themeConfig($form)
 
     $form->addInput($simpleCopyright);
     
-    $topArticle = new \Typecho\Widget\Helper\Form\Element\Text(
+    $topArticle = new Text(
         'topArticle',
         null,
         null,
@@ -144,7 +156,7 @@ function themeConfig($form)
 
     $form->addInput($topArticle);
 
-    $sidebarBlock = new \Typecho\Widget\Helper\Form\Element\Checkbox(
+    $sidebarBlock = new Checkbox(
         'sidebarBlock',
         [
             'ShowAuthorInfo'     => _t('显示站长信息'),
@@ -159,7 +171,7 @@ function themeConfig($form)
 
     $form->addInput($sidebarBlock->multiMode());
     
-    $hiddenNav = new \Typecho\Widget\Helper\Form\Element\Checkbox(
+    $hiddenNav = new Checkbox(
         'hiddenNav',
         getCategoryies(true),
         [],
@@ -178,7 +190,7 @@ function themeConfig($form)
 
     $form->addInput($additionalNav);
     
-    $footer_nocomment = new \Typecho\Widget\Helper\Form\Element\Text(
+    $footer_nocomment = new Text(
         'footer_nocomment',
         null,
         '',
@@ -188,7 +200,7 @@ function themeConfig($form)
 
     $form->addInput($footer_nocomment);
     
-    $ICP_show = new \Typecho\Widget\Helper\Form\Element\Text(
+    $ICP_show = new Text(
         'ICP_show',
         null,
         '',
@@ -217,6 +229,8 @@ function themeConfig($form)
     );
 
     $form->addInput($additionalJs);
+    
+    backup();
 }
 
 function getCategoryies($returnArray = false)
@@ -244,16 +258,87 @@ function getCategoryies($returnArray = false)
   }
 }
 
-/*
-function themeFields($layout)
-{
-    $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(
-        'logoUrl',
-        null,
-        null,
-        _t('站点LOGO地址'),
-        _t('在这里填入一个图片URL地址, 以在网站标题前加上一个LOGO')
-    );
-    $layout->addItem($logoUrl);
+
+function backup() {
+    $name = "ayakin";
+    $db = Typecho_Db::get();
+    if (isset($_POST["type"])) {
+        if($_POST["type"] == "创建备份") {
+            $value = $db->fetchRow(
+            $db->select()->from("table.options")->where("name = ?", "theme:" . $name)
+            )["value"];
+            if (
+                    $db->fetchRow(
+                      $db->select()->from("table.options")->where("name = ?", "theme:" . $name . "_backup")
+                    )
+                ) {
+        
+                $db->query(
+                    $db->update("table.options")->rows(["value" => $value])->where("name = ?", "theme:" . $name . "_backup")
+                );
+                Notice::alloc()->set("备份更新成功", "success");
+                Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+              } else {
+                if ($value) {
+                    $db->query(
+                    $db
+                      ->insert("table.options")
+                      ->rows(["name" => "theme:" . $name . "_backup", "user" => "0", "value" => $value])
+                        );
+                        Notice::alloc()->set("备份成功", "success");
+                        Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+                }
+              }
+        }
+        if ($_POST["type"] == "还原备份") {
+                  if (
+                    $db->fetchRow(
+                      $db->select()->from("table.options")->where("name = ?", "theme:" . $name . "_backup")
+                    )
+                  ) {
+            
+                    $_value = $db->fetchRow(
+                      $db->select()->from("table.options")->where("name = ?", "theme:" . $name . "_backup")
+                    )["value"];
+                    $db->query(
+                      $db->update("table.options")->rows(["value" => $_value])->where("name = ?", "theme:" . $name)
+                    );
+                    if($db->fetchRow(
+                      $db->select()->from("table.options")->where("name = ?", "theme:" . $name)
+                    )["value"] == $_value){
+                        Notice::alloc()->set("备份还原成功", "success");
+                        Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+                    }
+                    else {
+                        
+                        Notice::alloc()->set("备份还原失败", "error");
+                        Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+                    }
+                  } else {
+            
+                    Notice::alloc()->set("无备份数据，请先创建备份", "error");
+                    Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+                }
+        }
+        if ($_POST["type"] == "删除备份") {
+                      if (
+                        $db->fetchRow(
+                          $db->select()->from("table.options")->where("name = ?", "theme:" . $name . "_backup")
+                        )
+                      ) {
+            
+                        $db->query($db->delete("table.options")->where("name = ?", "theme:" . $name . "_backup"));
+                        Notice::alloc()->set("删除备份成功", "success");
+                        Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+                      } else {
+            
+                        Notice::alloc()->set("无备份数据，无法删除", "success");
+                        Options::alloc()->response->redirect(Common::url("options-theme.php", Options::alloc()->adminUrl));
+                      }
+                    }
+    }
+    echo '<br/><div class="message error" style="border-radius: 5px;padding: 8px 18px;background: #FDD835;color: #b56117;box-shadow: 0px 0px 13px -2px #FFEB3B;"><h2 class="message-title">请先点击右下角的保存设置按钮，创建备份！</h2><form class="backup" action="?jasmine_backup" method="post" style="display: flex;gap: 10px;margin-bottom: 10px;flex-wrap: wrap;">
+    <input type="submit" name="type" class="btn primary" value="创建备份" style="color: #FFF;border-radius: 3px;background-color: #EF6C00;" />
+    <input type="submit" name="type" class="btn primary" value="还原备份" style="color: #FFF;border-radius: 3px;background-color: #EF6C00;" />
+    <input type="submit" name="type" class="btn primary" value="删除备份" style="color: #FFF;border-radius: 3px;background-color: #EF6C00;" /></form></div>';
 }
-*/
