@@ -152,14 +152,23 @@ Ayain已开源至Github，[点击下载Ayakin主题][2]。
 
 ## 四、更新日志
 
-2023-10-3：
+2023-10-14 [v1.1.0]:
+- 新增主题数据备份功能 [@Lumirant](https://github.com/lumirant)
+- 调整了后台页面样式 [@Lumirant](https://github.com/lumirant)
+- 修复了导航栏菜单显示不完整的问题 [@Lumirant](https://github.com/lumirant)
+
+2023-10-3 [v1.1.0]：
 - 修复了站名过长时显示不完整的问题 [@Violetmail](https://github.com/Violetmail)
 - 页脚添加了备案号显示 [@Violetmail](https://github.com/Violetmail)
 - 文章评论关闭时，可自定义底部的文字提示 [@Violetmail](https://github.com/Violetmail)
 - 修复了导航栏菜单显示层级错误的问题 [@Lumirant](https://github.com/lumirant)
 
-2023-10-2：
+2023-10-2 [v1.1.0]：
 - 修复了置顶文章为空时渲染出错的问题 [@Lumirant](https://github.com/lumirant)
+
+
+2023-9-10 [v1.0.0]:
+- Ayakin 1.0.0 版本正式发布
 
 ## 五、开源协议
 
