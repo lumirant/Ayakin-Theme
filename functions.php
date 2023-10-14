@@ -22,12 +22,6 @@ function themeConfig($form)
     <link rel="stylesheet" href="'. Typecho_Db::get()->fetchRow(
             Typecho_Db::get()->select()->from("table.options")->where("name = ?", "siteUrl")
             )["value"] .'/usr/themes/Ayakin/css/admin.css">';
-    // echo '
-    // <div class="message success" style="border-radius: 5px;padding: 8px 18px;background: #FDD835;color: #b56117;box-shadow: 0px 0px 13px -2px #FFEB3B;margin: 15px 0px;">
-    //     <h2 class="message-title">你的主题配置尚未备份</h2>
-    //     <p class="message-content">当你切换博客主题时，Ayakin的配置信息将会丢失，<a href="#">点击备份</a>可以避免这种情况的发生。</p>
-    // </div>
-    // ';
     $themecolor = new Radio(
         'themecolor',
         [
