@@ -165,6 +165,36 @@ function themeConfig($form)
 
     $form->addInput($topArticle);
 
+    $githubID= new Text(
+      'githubID',
+      null,
+      null,
+      _t('Github'),
+      _t('填写Github账号')
+  );
+
+    $form->addInput($githubID);
+
+    $steamID = new Text(
+      'steamID',
+      null,
+      null,
+      _t('Steam'),
+      _t('填写steam账号')
+  );
+
+    $form->addInput($steamID);
+
+    $BilibiliID = new Text(
+      'BilibiliID',
+      null,
+      null,
+      _t('Bilibili'),
+      _t('填写B站账号')
+    );
+
+    $form->addInput($BilibiliID);
+
     $sidebarBlock = new Checkbox(
         'sidebarBlock',
         [

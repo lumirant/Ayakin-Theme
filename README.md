@@ -155,6 +155,7 @@ Ayain已开源至Github，[点击下载Ayakin主题][2]。
 - 新增代码高亮功能，使用`Prismjs`
   - 支持JS、HTML、CSS、TS、C/C++、C#、Java、Python、PHP、GO、SQL、Ruby、Rust、Matlab、Git、bash+shell
   - 支持prism的tomorrow和coy主题，代码块添加了MacOS风格
+- 右上角作者信息添加社交链接。
 
 2023-10-14 [v1.1.0]:
 - 新增主题数据备份功能 [@Lumirant](https://github.com/lumirant)
