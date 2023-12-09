@@ -4,7 +4,7 @@
  *
  * @package Ayakin
  * @author Lumirant
- * @version 1.0
+ * @version 1.1
  * @link http://lumirant.top
  */
 
