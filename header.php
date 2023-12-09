@@ -29,6 +29,28 @@
 
     <!-- 通过自有函数输出HTML头部信息 -->
     <?php $this->header(); ?>
+
+    <!-- 引入awesome图标 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
+    <!-- 为pre块添加 line-numbers 类 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var codeBlocks = document.querySelectorAll('.post-content pre:not(.line-numbers)');
+            codeBlocks.forEach(function (codeBlock) {
+                codeBlock.classList.add('line-numbers');
+            });
+        });
+    </script>
+    <!-- prism 代码高亮&主题选择 -->
+    <?php if ($this->options->prismjs_theme == 'tomorrow') : ?>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('prismjs/tomorrow/prism.css'); ?>" />
+    <script src="<?php $this->options->themeUrl('prismjs/tomorrow/prism.js'); ?>"></script>
+    <?php elseif ($this->options->prismjs_theme == 'coy') : ?>
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('prismjs/coy/prism.css'); ?>" />
+    <script src="<?php $this->options->themeUrl('prismjs/coy/prism.js'); ?>"></script>
+    <?php endif; ?>
+    <!-- 修改为mac样式 -->
+    <link rel="stylesheet" href="<?php $this->options->themeUrl('css/mac.css'); ?>" />
 </head>
 <body>
 <header id="header" class="clearfix">
