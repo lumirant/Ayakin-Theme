@@ -32,25 +32,25 @@
                 <?php endif; ?>
 
                 <!-- 添加社交链接 -->
-                <ul class="mylinks_list" style="display:flex;justify-content: space-between;padding:0;">
+                <ul class="mylinks_list" style="display:flex;justify-content: space-evenly;padding:0;">
                 <?php if(!empty(getOptions()->githubID)) : ?>
                     <li class="mylinks-item li-none-style">
                         <a href="<?php echo getOptions()->githubID; ?>" target="_blank">
-                            <i class="fab fa-github" style="font-size:48px;"></i>
+                            <i class="fab fa-github" style="font-size:36px;"></i>
                         </a>
                     </li>
                 <?php endif; ?>
                 <?php if(!empty(getOptions()->steamID)) : ?>
                     <li class="mylinks-item li-none-style">
                         <a href="<?php echo getOptions()->steamID; ?>" target="_blank">
-                            <i class="fab fa-steam" style="font-size:48px;"></i>
+                            <i class="fab fa-steam" style="font-size:36px;"></i>
                         </a>
                     </li>
                 <?php endif; ?>
                 <?php if(!empty(getOptions()->BilibiliID)) : ?>
                     <li class="mylinks-item li-none-style">
                         <a href="<?php echo getOptions()->BilibiliID; ?>" target="_blank">
-                        <i class="fa-brands fa-bilibili" style="font-size:48px;"></i>
+                        <i class="fa-brands fa-bilibili" style="font-size:36px;"></i>
                         </a>
                     </li>
                 <?php endif; ?>
