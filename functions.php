@@ -39,6 +39,21 @@ function themeConfig($form)
 
     $form->addInput($themecolor);
     
+    //添加代码高亮主题选择
+    $prismjs_theme = new Radio(
+      'prismjs_theme',
+      [
+          'tomorrow' => _t('Tomorrow Nighty'),
+          'coy' => _t('coy'),
+          'close' => _t('关闭代码高亮'),
+      ],
+      'tomorrow',
+      _t('代码高亮主题'),
+      _t('默认选择Tomorrow Nighty主题,代码框风格为Mac')
+  );
+
+  $form->addInput($prismjs_theme);
+
     $faviconUrl = new Text(
         'faviconUrl',
         null,
