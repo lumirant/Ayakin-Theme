@@ -31,7 +31,7 @@
     <?php $this->header(); ?>
 
     <!-- 引入awesome图标 -->
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- 为pre块添加 line-numbers 类 -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
