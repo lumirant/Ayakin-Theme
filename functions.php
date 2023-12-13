@@ -39,6 +39,21 @@ function themeConfig($form)
 
     $form->addInput($themecolor);
     
+    //添加代码高亮主题选择
+    $prismjs_theme = new Radio(
+      'prismjs_theme',
+      [
+          'tomorrow' => _t('Tomorrow Nighty'),
+          'coy' => _t('coy'),
+          'close' => _t('关闭代码高亮'),
+      ],
+      'tomorrow',
+      _t('代码高亮主题'),
+      _t('默认选择Tomorrow Nighty主题,代码框风格为Mac')
+  );
+
+  $form->addInput($prismjs_theme);
+
     $faviconUrl = new Text(
         'faviconUrl',
         null,
@@ -149,6 +164,36 @@ function themeConfig($form)
     );
 
     $form->addInput($topArticle);
+
+    $githubID= new Text(
+      'githubID',
+      null,
+      null,
+      _t('Github'),
+      _t('填写Github账号')
+  );
+
+    $form->addInput($githubID);
+
+    $steamID = new Text(
+      'steamID',
+      null,
+      null,
+      _t('Steam'),
+      _t('填写steam账号')
+  );
+
+    $form->addInput($steamID);
+
+    $BilibiliID = new Text(
+      'BilibiliID',
+      null,
+      null,
+      _t('Bilibili'),
+      _t('填写B站账号')
+    );
+
+    $form->addInput($BilibiliID);
 
     $sidebarBlock = new Checkbox(
         'sidebarBlock',

@@ -11,6 +11,7 @@
             <?php $this->content(); ?>
         </div>
     </article>
+
     <?php $this->need('/component/comments.php'); ?>
 </div><!-- end #main-->
 
